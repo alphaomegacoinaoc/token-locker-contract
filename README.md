@@ -20,12 +20,4 @@ Before you begin, ensure you have met the following requirements:
 - A Holesky Testnet account and wallet.
 - Web3.js or ethers.js library to interact with the blockchain.
 
-## Installation
 
-Follow these steps to set up the project locally:
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/Balabrucks05/Token-Locker.git
-   cd yourrepository
