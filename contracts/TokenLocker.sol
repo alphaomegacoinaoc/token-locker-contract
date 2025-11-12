@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.27;
+pragma solidity ^0.8.27;
 
 import "@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC20/utils/SafeERC20Upgradeable.sol";
@@ -7,14 +7,18 @@ import "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 
 
-contract TokenLocker is ReentrancyGuardUpgradeable, OwnableUpgradeable,UUPSUpgradeable, PausableUpgradeable{
+    /**
+     * @title TokenLocker
+     * @dev A contract to lock ERC20 tokens with features for adding funds, withdrawing tokens, and extending lock periods.
+     * Implements upgradeable patterns and includes access control mechanisms.
+    */
+    contract TokenLocker is ReentrancyGuardUpgradeable, OwnableUpgradeable,UUPSUpgradeable, PausableUpgradeable{
     using SafeERC20Upgradeable for IERC20Upgradeable;
 
-    mapping(address => mapping(uint256 => uint256)) private userLockers;
-
-
+    /// @dev Struct representing a lock
     struct Lock{
         address tokenAddress;       // Address of the ERC20 token
         uint256 amount;             // Amount of the tokens locked
@@ -23,129 +27,159 @@ contract TokenLocker is ReentrancyGuardUpgradeable, OwnableUpgradeable,UUPSUpgra
         string title;               // Title of the lock
         string description;         // Description of the lock
         bool isActive;              // Whether the lock is still active
-        address owner;              // Owner of the locked tokens
-    }
+        uint256 lockPercentage;     // Lock Percentage
 
-    // struct UserInfo {
-    //    uint256 amount;
-    // }
+    }
 
     // Array to store all locks
     Lock[] public locks;
 
-    // Mapping from address to their lock indices
-    mapping(address => uint256[]) public userLockIndices;
-
-    // Mapping to store the user balances (total locked amount)
-    // mapping(address => uint256) public userBalances;
-
     // Events
+    /**
+     * @notice Emitted when tokens are locked
+     * @param lockID The unique identifier for the lock
+     * @param token The address of the locked token
+     * @param amount The amount of tokens locked
+     * @param startTime The timestamp when the lock starts
+     * @param endTime The timestamp when the lock ends
+     * @param owner The address of the lock creator
+     */
     event TokensLocked(
         uint256 indexed lockID,
         address indexed token,
         uint256 amount,
         uint256 startTime,
         uint256 endTime,
-        address indexed owner
+        address indexed owner,
+        uint256 lockPercentage
     );
 
-    // event TokensUnlocked(
-    //     uint256 indexed lockID,
-    //     address indexed token,
-    //     address indexed owner,
-    //     uint256 amount
-    // );
-    
+    /**
+     * @notice Emitted when funds are added to a lock
+     * @param user The address adding the funds
+     * @param lockId The unique identifier of the lock
+     * @param amount The amount of tokens added
+     * @param timestamp The timestamp when funds were added
+     */
      event FundsAddedToLocker(
         address indexed user,
         uint256 indexed lockId,
         uint256 amount,
         uint256 timestamp
     );
+
+    /**
+     * @notice Emitted when tokens are withdrawn
+     * @param lockID The unique identifier of the lock
+     * @param token The address of the token
+     * @param recipient The address of the recipient
+     * @param amount The amount of tokens withdrawn
+     */
     event TokensWithdraw(
         uint256 indexed lockID,
         address indexed token,
-        address indexed owner,
+        address indexed recipient,
         uint256 amount
     );
+
+    /**
+     * @notice Emitted when a lock's end time is extended
+     * @param lockID The unique identifier of the lock
+     * @param newEndTime The new end time of the lock
+     */
     event LockExtended(
         uint256 indexed lockID, 
         uint256 newEndTime
     );
 
+    /// @custom:oz-upgrades-unsafe-allow constructor
+    constructor() {
+        _disableInitializers();
+    }
 
-    //Constructor is removed, replaced with an initializer function
     function initialize() public initializer{
         __Ownable_init();
+        require(msg.sender == owner(), "Unauthorized");
         __ReentrancyGuard_init();
         __UUPSUpgradeable_init();
         __Pausable_init();
     }
-
+ 
+    /**
+     * @notice Authorizes upgrades to the contract
+     * @param newImplementation The address of the new implementation
+     */
     function _authorizeUpgrade(address newImplementation) internal override onlyOwner{}
 
+    /**
+     * @notice Pauses the contract
+     * @dev Only callable by the owner
+     */
     function pause() external onlyOwner{
         _pause();
     }
+
+    /**
+     * @notice Unpauses the contract
+     * @dev Only callable by the owner
+     */
     function unpause() external onlyOwner{
         _unpause();
     }
 
-
     /**
-    * @dev Creates a new token lock
-    * @param tokenAddress The address of the token to lock
-    * @param startTime The timestamp when the lock starts
-    * @param endTime The timestamp when the lock ends
-    * @param description The description of the lock
-    * @return lockId The index of the created Lock
-    */
+     * @notice Creates a new token lock
+     * @param tokenAddress The address of the token to lock
+     * @param startTime The timestamp when the lock starts
+     * @param endTime The timestamp when the lock ends
+     * @param title The title of the lock
+     * @param description The description of the lock
+     * @return lockId The index of the created lock
+     * @notice Creates a new token lock with lock percentage
+     */
     function createLock(
         address tokenAddress,
+        uint256 amount,
         uint256 startTime,
         uint256 endTime,
         string memory title,
-        string memory description
+        string memory description,
+        uint256 lockPercentage
     ) external nonReentrant onlyOwner returns (uint256) {
         require(tokenAddress != address(0), "Invalid Token Address");
+        require(amount > 0, "Amount must be greater than zero");
         require(startTime >= block.timestamp, "Start Time must be in the future");
         require(endTime > startTime, "End time must be after the start time");
         require(bytes(title).length > 0, "Title cannot be empty");
-
-        //Prevent the same token from begin used for multiple locks by the user
-        for (uint256 i =0; i < userLockIndices[msg.sender].length; i++){
-            Lock storage existingLock = locks[userLockIndices[msg.sender][i]];
-            require(existingLock.tokenAddress != tokenAddress, "Token already used for a lock");
-        }
+        require(lockPercentage <= 10000000, "Lock Percentage cannot exceed 100.0000%");
 
         // Create new Lock
         Lock memory newLock = Lock({
             tokenAddress: tokenAddress,
-            amount: 0, //Funds can be added Later
+            amount: amount, 
             startTime: startTime,
-            endTime: endTime,
+            endTime: endTime, 
             title: title,
             description: description,
             isActive: true,
-            owner: msg.sender 
+            lockPercentage: lockPercentage
         });
 
-        // Add lock to array and get index
         uint256 lockId = locks.length;
         locks.push(newLock);
 
-        // Add lock index to the user's locks
-        userLockIndices[msg.sender].push(lockId);
+         // Transfer tokens directly to the contract
+        IERC20Upgradeable(tokenAddress).safeTransferFrom(msg.sender, address(this), amount);
 
-
-        // // Update user's locked balance
-        // userBalances[msg.sender] += amount;
-
-        // Emit the locked tokens event
-        emit TokensLocked(lockId, tokenAddress,0, startTime, endTime, msg.sender);
+        emit TokensLocked(lockId, tokenAddress,amount, startTime, endTime, msg.sender,lockPercentage);
         return lockId;
     }
 
+    /**
+     * @notice Adds funds to an existing lock
+     * @param lockId The unique identifier of the lock
+     * @param amount The amount of tokens to add
+     */
     function addFundsToLocker(uint256 lockId, uint256 amount) external onlyOwner whenNotPaused {
         require(amount > 0, "amount should not be 0");
         require(lockId < locks.length, "locker doesn't exist");
@@ -154,115 +188,78 @@ contract TokenLocker is ReentrancyGuardUpgradeable, OwnableUpgradeable,UUPSUpgra
         //Ensures the user cannot add funds to a lock that is inactive
         require(lock.isActive, "Cannot add funds to an inactive Lock");
 
-        // Transfer tokens directly to the contract
-        IERC20Upgradeable(lock.tokenAddress).safeTransferFrom(msg.sender, address(this), amount);
-
         //Update lock amount and user-specific record
         lock.amount += amount;
-        userLockers[msg.sender][lockId] += amount;    
 
         //Emit the FundsAddedtoLocker event
         emit FundsAddedToLocker(msg.sender, lockId, amount, block.timestamp);
 
+        // Transfer tokens directly to the contract
+        IERC20Upgradeable(lock.tokenAddress).safeTransferFrom(msg.sender, address(this), amount);
+
     }
 
-    // /**
-    // * @dev Unlocks tokens if the lock period has ended (anyone can unlock after the lock ends)
-    // * @param lockId The index of the lock to unlock
-    // */
-    // function unlock(uint256 lockId) external onlyOwner nonReentrant{
-    //     require(lockId < locks.length, "Invalid Lock ID");
-    //     Lock storage lock = locks[lockId];
-
-    //     // require(lock.owner == msg.sender, "Not the Lock Owner"); 
-    //     require(lock.isActive, "Lock is not Active");
-    //     require(block.timestamp >= lock.endTime, "Lock period not ended yet!");
-
-    //     lock.isActive = false;
-
-    //     //Transfer tokens to the lock's owner
-    //     IERC20Upgradeable(lock.tokenAddress).safeTransfer(msg.sender, lock.amount);
-
-    //     // // Update user's locked balance
-    //     // userBalances[lock.owner] -= lock.amount;
-
-    //     emit TokensUnlocked(lockId, lock.tokenAddress,msg.sender, lock.amount);
-    // }
-
     /**
-    * @dev Emergency Withdraw of locked tokens, deducting dynamic penalty fee
-    * @param lockId The index of the lock to withdraw from
-    */
-    function withdrawTokens(uint256 lockId, uint256 amount) external onlyOwner nonReentrant whenNotPaused {
+     * @notice Withdraws tokens from a lock
+     * @param lockId The unique identifier of the lock
+     * @param amount The amount of tokens to withdraw
+     */
+    function withdrawTokens(
+        uint256 lockId,
+        uint256 amount,
+        address recipient
+        ) external onlyOwner nonReentrant whenNotPaused {
         require(lockId < locks.length, "Invalid lock ID");
+        require(recipient != address(0), "Invalid recipient Address");
+
         Lock storage lock = locks[lockId];
 
         require(lock.isActive, "Lock is not Active");
         require(amount > 0 && amount <= lock.amount, "Invalid Withdrawal amount");
 
          lock.amount -= amount;
-        // require(block.timestamp >= lock.startTime, "Lock period not started");
-        // require(block.timestamp < lock.endTime, "Lock period already ended");
 
-        // uint256 penaltyAmount = (lock.amount * penaltyPercentage) / 100; // Dynamic penalty based on penaltyPercentage
-        // uint256 returnAmount = lock.amount - penaltyAmount;
+        IERC20Upgradeable(lock.tokenAddress).safeTransfer(recipient, amount);
 
-        IERC20Upgradeable(lock.tokenAddress).safeTransfer(msg.sender, amount);
-
-
-       
         // Emit the TokensWithdraw event
-        emit TokensWithdraw(lockId, lock.tokenAddress, msg.sender,amount);
+        emit TokensWithdraw(lockId, lock.tokenAddress, recipient,amount);
     }
-
+    
     /**
-    * @dev Returns all locks for a specific user
-    * @param user The address of the user
-    * @return Array of Lock structs
-    */
-    function getUserLocks(address user) external view returns (Lock[] memory) {
-        uint256[] memory indices = userLockIndices[user];
-        Lock[] memory userLocks = new Lock[](indices.length);
-
-        for (uint256 i = 0; i < indices.length; i++){
-            userLocks[i] = locks[indices[i]];
-        }
-        return userLocks;
-    }
-
-    //Function to allow only the Owner to view all user locks
-    function getAllUserLocks() external view onlyOwner returns(Lock[] memory){
+     * @notice Retrieves all locks
+     * @return An array of all locks
+     */
+    function getAllUserLocks() external view returns(Lock[] memory){
         return locks;
     }
 
-   
 
     /**
-    * @dev Returns the number of locks for a specific user
-    * @param user The address of the user
-    */
-    function getUserLockCount(address user) external view onlyOwner returns(uint256) {
-        return userLockIndices[user].length;
-    }
-
-     //Function to allow the owner to view the balance of a user in a specific token
-     function getUserTokenBalance(address token, address user) external view onlyOwner returns (uint256) {
+     * @notice Retrieves the balance of a user for a specific token
+     * @param token The address of the token
+     * @param user The address of the user
+     * @return The token balance of the user
+     */     
+    function getUserTokenBalance(address token, address user) external view  returns (uint256) {
         require(token != address(0), "Invalid token address");
         return IERC20Upgradeable(token).balanceOf(user);
     }
 
-   
     /**
-    * @dev Checks if a lock is still active
-    * @param lockId The index of the lock
-    * @return bool True if the lock is active, otherwise false
-    */
-    function isLockActive(uint256 lockId) external view onlyOwner returns(bool) {
+     * @notice Checks if a lock is active
+     * @param lockId The unique identifier of the lock
+     * @return True if the lock is active, false otherwise
+     */
+    function isLockActive(uint256 lockId) external view  returns(bool) {
         require(lockId < locks.length, "Invalid lock ID");
         return locks[lockId].isActive;
     }
 
-     //Extend to extend Lock period, only Callable by the admin
+    /**
+     * @notice Extends the lock period of a lock
+     * @param lockId The unique identifier of the lock
+     * @param additionalTime The additional time to extend the lock period by
+     */
     function extendLockPeriod(uint256 lockId, uint256 additionalTime) public onlyOwner {
         require(lockId < locks.length, "Invalid Lock ID");
         require(additionalTime > 0, "Additional Time must be greater than 0");
@@ -275,9 +272,14 @@ contract TokenLocker is ReentrancyGuardUpgradeable, OwnableUpgradeable,UUPSUpgra
         lock.endTime += additionalTime;
 
         emit LockExtended(lockId, lock.endTime);
+    }  
+
+    /**
+     * @notice Retrieves the lock percentage of a specific lock
+     */
+    function getLockPercentage(uint256 lockId) external view returns(uint256){
+        require(lockId < locks.length, "Invalid Lock ID");
+        return locks[lockId].lockPercentage;
     }
-
-
-   
 }
 
