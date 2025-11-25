@@ -81,12 +81,11 @@ Tokens are transferred into the contract and recorded as locked.
 ## In Simple Terms
 The **AOC Locker(V1.0.0) contract acts as a secure vault for ERC20 V3 and BEP20 V2.1 Tokens,** managed entirely by the **Mutli-Sig Owners.**
 
-It allows you to:
-
-- Safely lock tokens for a set period,
-- Add tokens as needed,
-- Extend the lock duration, and
-- Temporarily pause all operations for safety.
+**It allows you to:**
+- **Safely lock tokens** for a _set period_,
+- **Add tokens** as needed,
+- **Extend the lock duration**, and
+- **Temporarily pause all operations** for safety.
   
 All lock details are visible to the public, ensuring **trust and transparency** while maintaining **full owner control** over token management.
 
