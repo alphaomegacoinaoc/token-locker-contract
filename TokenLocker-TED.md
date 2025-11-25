@@ -19,7 +19,8 @@ The **AOC Locker(V1.0.0)** is a secure, upgradeable Ethereum smart contract desi
 Only the **contract Mutli-Sig Owners** have full control over creating, managing, and withdrawing locked tokens after the lock period expires.
 
 All lock details are publicly viewable for **transparency**.
-In this Technical Explanatory Documentation(TED), we are dealing with AOC ERC20 V3 and AOC BEP20 (V2.1) Tokens.
+
+In this _**Technical Explanatory Documentation(TED),**_ we are dealing with **AOC ERC20 V3 and AOC BEP20 (V2.1)** Tokens.
 
 ## How It Works
 1. The **Muti-Sig Owners create a lock** for any **AOC ERC20 V3** and **AOC BEP20 (V2.1) Tokens.**
