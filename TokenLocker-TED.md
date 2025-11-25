@@ -1,6 +1,6 @@
 # TOKEN LOCKER 
 ## OVERVIEW:
-## Current and Future AOC Token and Coin  Versions
+### Current and Future AOC Token and Coin  Versions
 **Alpha Omega Coin (AOC)** - The **Queen of Cryptocurrencies**, operates on an **interoperable** M**onetary, Financial and Economic Galaxy (AOC MFEG)**  which is composed of **AOC Coin (=AOC M**other **C**oin) and **several tokens.** 
 
 As of now, two token contract versions have been launched: 
