@@ -18,7 +18,8 @@ As of now, two token contract versions have been launched:
 **_The following token standards are yet to be launched_:** 
 - AOC TRC20
 - AOC POLY
-- **AOC Coin** or **AOC Mother Coin** is also yet to be launched…
+
+_**AOC Coin**_ or _**AOC Mother Coin**_ is also yet to be launched…
 
 ## Introduction
 The **AOC Locker(V1.0.0)** is a secure, upgradeable Ethereum smart contract designed to l**ock AOC Coin(= AOC Mother Coin) and AOC Tokens (ERC-20; BEP20 V2.1; TRC20; POLY)** for a specific period of time.
