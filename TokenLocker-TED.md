@@ -1,4 +1,12 @@
-# TOKEN LOCKER 
+# Alpha Omega Coin (AOC), The Queen of cryptocurrencies
+<br>
+
+# Technical Explanatory Documentation (TED)
+## About
+
+# AOC LOCKER 
+<br> 
+
 ## OVERVIEW:
 ### Current and Future AOC Token and Coin  Versions
 **Alpha Omega Coin (AOC)** - The **Queen of Cryptocurrencies**, operates on an **interoperable** M**onetary, Financial and Economic Galaxy (AOC MFEG)**  which is composed of **AOC Coin (=AOC M**other **C**oin) and **several tokens.** 
