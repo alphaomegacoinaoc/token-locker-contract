@@ -8,8 +8,8 @@
 <br> 
 
 ## OVERVIEW:
-### Current and Future AOC Token and Coin  Versions
-**Alpha Omega Coin (AOC)** - The **Queen of Cryptocurrencies**, operates on an **interoperable** M**onetary, Financial and Economic Galaxy (AOC MFEG)**  which is composed of **AOC Coin (=AOC M**other **C**oin) and **several tokens.** 
+## Current and Future AOC Tokens and Coin  Versions
+**Alpha Omega Coin (AOC)** - The **Queen of Cryptocurrencies**, operates on an **interoperable** **Monetary, Financial and Economic Galaxy (AOC MFEG)**  which is composed of **AOC Coin (=AOC M**other **C**oin) and **several tokens.** 
 
 As of now, two token contract versions have been launched: 
 - AOC ERC20 V3
