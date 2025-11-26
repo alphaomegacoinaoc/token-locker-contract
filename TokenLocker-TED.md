@@ -4,7 +4,7 @@
 # Technical Explanatory Documentation (TED)
 ## About
 
-# AOC LOCKER (V1.0.0)
+# Alpha Omega Coin (AOC) - LOCKER (V1.0.0)
 <br> 
 
 ## OVERVIEW:
