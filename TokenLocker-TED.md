@@ -69,9 +69,9 @@ Each token lock stores the following information:
 - **Pausable Functionality:**
  The owner can _**pause and unpause** the entire contract_ for safety or maintenance.
 
-## Functions
+# Functions
 
-## Owner-Only (WRITE) Functions
+## Signers-Only (WRITE) Functions
 
 - **createLock(...) –** Creates a **new token lock** with _**custom duration,**_ **title, and description.**
 Tokens are transferred into the contract and recorded as locked.
