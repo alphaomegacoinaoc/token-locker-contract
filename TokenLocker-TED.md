@@ -14,7 +14,8 @@
 As of now, two token contract versions have been launched: 
 - AOC ERC20 V3
 - AOC BEP20 V2.1
-The following token standards are yet to be launched: 
+
+**_The following token standards are yet to be launched_:** 
 - AOC TRC20
 - AOC POLY
 - **AOC Coin** or **AOC Mother Coin** is also yet to be launched…
