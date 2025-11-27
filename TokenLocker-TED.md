@@ -171,7 +171,7 @@ The **AOC Locker(V1.0.0) contract acts as a secure vault for ERC20 V3 and BEP20 
 - **Extend the lock duration**, and
 - **Temporarily pause all operations** for safety.
   
-All lock details are visible to the public, ensuring **trust and transparency** while maintaining **full owner control** over token management.
+All lock details are visible to the public, ensuring **trust and transparency** while maintaining **full Signers control** over token management.
 
 
 
