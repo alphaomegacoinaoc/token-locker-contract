@@ -34,7 +34,7 @@ In this _**Technical Explanatory Documentation(TED),**_ we are dealing with **AO
 
 # Part 1 : Alpha Omega Coin  (AOC) BEP20 V2.1 Token and ERC20 V3 Identification Core Details
 ## AOC BEP20 V2.1
-- **Name**: Alpha Omega Coin (AOC)
+- **Name**: Alpha Omega Coin
 - **Symbol**: AOC
 - **Decimals**: 18
 - **Initial Fixed Supply** : 1,000,000,000,000 (**1 trillion**)
