@@ -122,7 +122,7 @@ _**Purpose:**_ Multi-sig Owners can pause/unpause transfers for security sake, m
 
 Everyone can view lock information publicly, but only the **Mutli-Sig Owners** can make changes.
 
-## Part 5 : Lock Details
+## Part 5 : Alpha Omega Coin (AOC) - LOCKER (V1.0.0) Details
 
 Each token lock stores the following information:
 
@@ -133,7 +133,7 @@ Each token lock stores the following information:
 - **Active status:** Whether the lock is currently active
 - **Lock percentage:** Used for calculation purposes.
   
-## Part 6 : Key Features
+## Part 6 : Alpha Omega Coin (AOC) - LOCKER (V1.0.0) Key Features
 - **Upgradeable and Ownable:**
  Built using _**OpenZeppelin’s upgradeable contract standards**_ with full owner control.
 - **Secure and Transparent:**
