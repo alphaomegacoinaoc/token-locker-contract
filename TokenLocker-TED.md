@@ -41,6 +41,7 @@ In this _**Technical Explanatory Documentation(TED),**_ we are dealing with **AO
 - **Total Maximum Fixed Supply** : 1,000,000,000,000 (**1 trillion**) _**No minting and No Burning**_
 - **TYPE**: **U**tility, **D**onation, **C**harity and **P**ayment **T**oken (**UDCPT**) 
 - **Network** / **Blockchain**: **B**inance **S**mart **C**hain (**BSC**)
+- **Standard:** _**B**inance Smart Chain_ **E**volution **P**roposal **20** (_**BEP20**_)
 - **Version** : Version 2.1 (V2.1)
 - **Upgradeability**: Uses OpenZeppelin UUPS (Universal Upgradeable Proxy Standard)
 - **Pausable**: Multi-sig Owners can pause/unpause transfers for security sake, migration sake or for a community-oriented intervention
@@ -50,10 +51,11 @@ In this _**Technical Explanatory Documentation(TED),**_ we are dealing with **AO
 - **Name**: Alpha Omega Coin (AOC)
 - **Symbol**: AOC
 - **Decimals**: 18
-- **Initial Fixed Supply** : 1,000,000,000,000 (**1 trillion**)
-- **Total Maximum Fixed Supply** : 1,000,000,000,000 (**1 trillion**) _**No minting and No Burning**_
+- **Initial Fixed Supply** : 100,000,000,000 _(**100 Billion**)_
+- **Total Maximum Fixed Supply** : 100,000,000,000 _(**100 Billion**)_ _**No minting and No Burning**_
 - **TYPE**: **U**tility, **D**onation, **C**harity and **P**ayment **T**oken (**UDCPT**) 
-- **Network** / **Blockchain**: **E**therium **R**equest for **C**omment (**ERC**)
+- **Network** / **Blockchain**: **Ethereum** (_**ETH**_)
+- **Standard**: **E**thereum **R**equest for **C**omment **20** (_**ERC20**_)
 - **Version** : Version 3
 - **Upgradeability**: Uses OpenZeppelin UUPS (Universal Upgradeable Proxy Standard)
 - **Pausable**: Multi-sig Owners can pause/unpause transfers for security sake, migration sake or for a community-oriented intervention
