@@ -21,7 +21,7 @@ As of now, _**two token contract versions**_ have been launched:
 
 _**AOC Coin**_ or _**AOC Mother Coin**_ is also yet to be launched…
 
-## Introduction
+# Introduction
 The **AOC Locker(V1.0.0)** is a secure, upgradeable Ethereum smart contract designed to l**ock AOC Coin(= AOC Mother Coin) and AOC Tokens (ERC-20; BEP20 V2.1; TRC20; POLY)** for a specific period of time.
 
  It ensures that **AOC Coin(= AOC Mother Coin) and AOC Tokens (ERC-20; BEP20 V2.1; TRC20; POLY)** cannot be accessed, transferred, or withdrawn until the lock period expires.
