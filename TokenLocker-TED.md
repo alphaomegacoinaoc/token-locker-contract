@@ -33,7 +33,7 @@ All lock details are publicly viewable for **transparency**.
 In this _**Technical Explanatory Documentation(TED),**_ we are dealing with **AOC ERC20 V3 and AOC BEP20 (V2.1)** Tokens.
 
 # Part 1 : Alpha Omega Coin  (AOC) BEP20 V2.1 Token and ERC20 V3 Identification Core Details
-## BEP20 V2.1
+## AOC BEP20 V2.1
 - **Name**: Alpha Omega Coin (AOC)
 - **Symbol**: AOC
 - **Decimals**: 18
@@ -47,7 +47,7 @@ In this _**Technical Explanatory Documentation(TED),**_ we are dealing with **AO
 - **Pausable**: Multi-sig Owners can pause/unpause transfers for security sake, migration sake or for a community-oriented intervention
 - **Blacklist**: Multi-Sig Owners can block addresses from sending/receiving tokens for security sake, scam prevention, protection from malicious attacks and also for internal regulations sake
 
-## ERC20 V3
+## AOC ERC20 V3
 - **Name**: Alpha Omega Coin (AOC)
 - **Symbol**: AOC
 - **Decimals**: 18
@@ -56,15 +56,15 @@ In this _**Technical Explanatory Documentation(TED),**_ we are dealing with **AO
 - **TYPE**: **U**tility, **D**onation, **C**harity and **P**ayment **T**oken (**UDCPT**) 
 - **Network** / **Blockchain**: **Ethereum** (_**ETH**_)
 - **Standard**: **E**thereum **R**equest for **C**omment **20** (_**ERC20**_)
-- **Version** : Version 3
-- **Upgradeability**: Uses OpenZeppelin UUPS (Universal Upgradeable Proxy Standard)
+- **Version** : Version 3 (V3)
+- **Upgradeability**: Uses OpenZeppelin UUPS (_Universal Upgradeable Proxy Standard_)
 - **Pausable**: Multi-sig Owners can pause/unpause transfers for security sake, migration sake or for a community-oriented intervention
 - **Blacklist**: Multi-Sig Owners can block addresses from sending/receiving tokens for security sake, scam prevention, protection from malicious attacks and also for internal regulations sake
 
 
 
 
-# Part 2 : Alpha Omega Coin  (AOC) BEP20 V2.1 and ERC20 V3 Token Locker Smart Contract Testnet + Mainnet Codes Identification Urls 
+# Part 2 : Alpha Omega Coin  (AOC) BEP20 V2.1 and ERC20 V3 Locker Smart Contract Testnet + Mainnet Codes Identification Urls 
 # Testnet : 
 ### _(BNB)_
 **Explorer**:  https://testnet.bscscan.com/address/0xD1Dd6A4019d915D0dAeaC3288e4a86345ec93e0D#writeProxyContract
@@ -88,7 +88,7 @@ In this _**Technical Explanatory Documentation(TED),**_ we are dealing with **AO
 
 
 
-# Part 3 : Alpha Omega Coin  (AOC) BEP20 V2.1 and ERC20 V3 Token Locker Multi-Sig Smart Contract Testnet + Mainnet Codes Identification Urls 
+# Part 3 : Alpha Omega Coin  (AOC) BEP20 V2.1 and ERC20 V3 Locker Multi-Sig Smart Contract Testnet + Mainnet Codes Identification Urls 
 # Testnet : _(Amoy)_
 **Explorer:**  https://amoy.polygonscan.com/address/0x59952eE49399E847fC4550a06911Ca75a637D302#code
 
@@ -106,7 +106,7 @@ In this _**Technical Explanatory Documentation(TED),**_ we are dealing with **AO
 - **Branch Name:** Mainnet-v1.0.0
 - **Branch Link:** https://github.com/alphaomegacoinaoc/alphaomegacoinaoc-Multi-Sig-Contract/blob/Mainnet-v1.0.0/MultiSigTokenVault.sol
 
-## How It Works
+## Part 4 : How It Works
 1. The **Muti-Sig Owners create a lock** for any **AOC ERC20 V3** and **AOC BEP20 (V2.1) Tokens.**
 2. Tokens are **transferred into the TokenLocker(V1.0.0) contract** and held securely.
 3. Tokens remain locked until either:
@@ -122,7 +122,7 @@ _**Purpose:**_ Multi-sig Owners can pause/unpause transfers for security sake, m
 
 Everyone can view lock information publicly, but only the **Mutli-Sig Owners** can make changes.
 
-## Lock Details
+## Part 5 : Lock Details
 
 Each token lock stores the following information:
 
@@ -133,7 +133,7 @@ Each token lock stores the following information:
 - **Active status:** Whether the lock is currently active
 - **Lock percentage:** Used for calculation purposes.
   
-## Key Features
+## Part 6 : Key Features
 - **Upgradeable and Ownable:**
  Built using _**OpenZeppelin’s upgradeable contract standards**_ with full owner control.
 - **Secure and Transparent:**
@@ -143,7 +143,7 @@ Each token lock stores the following information:
 - **Pausable Functionality:**
  The owner can _**pause and unpause** the entire contract_ for safety or maintenance.
 
-# Functions
+# Part 7 : Alpha Omega Coin (AOC) - LOCKER Smart Contract Read + Write Functions
 
 ## Signers-Only (WRITE) Functions
 
