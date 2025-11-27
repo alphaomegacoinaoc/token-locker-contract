@@ -106,10 +106,10 @@ In this _**Technical Explanatory Documentation(TED),**_ we are dealing with **AO
 - **Branch Name:** Mainnet-v1.0.0
 - **Branch Link:** https://github.com/alphaomegacoinaoc/alphaomegacoinaoc-Multi-Sig-Contract/blob/Mainnet-v1.0.0/MultiSigTokenVault.sol
 
-## Part 4 : How Alpha Omega Coin (AOC) - LOCKER (V1.0.0) Works
+## Part 4 : How Alpha Omega Coin (AOC) - LOCKER (V1.0.0) Works ?
 1. The **Muti-Sig Owners create a lock** for any **AOC ERC20 V3** and **AOC BEP20 (V2.1) Tokens.**
-2. Tokens are **transferred into the TokenLocker(V1.0.0) contract** and held securely.
-3. Tokens remain locked until either:
+2. Tokens are **transferred into the Alpha Omega Coin (AOC) - Locker(V1.0.0) contract** and held securely.
+3. Tokens **remain locked until** either:
        - The **end time** of the lock period is reached.
    
 The **Mutli-Sig Owners** can at any time:
