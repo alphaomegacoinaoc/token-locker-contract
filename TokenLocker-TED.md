@@ -32,6 +32,78 @@ All lock details are publicly viewable for **transparency**.
 
 In this _**Technical Explanatory Documentation(TED),**_ we are dealing with **AOC ERC20 V3 and AOC BEP20 (V2.1)** Tokens.
 
+# Part 1 : Alpha Omega Coin  (AOC) BEP20 V2.1 Token and ERC20 V3 Identification Core Details
+## BEP20 V2.1
+- **Name**: Alpha Omega Coin (AOC)
+- **Symbol**: AOC
+- **Decimals**: 18
+- **Initial Fixed Supply** : 1,000,000,000,000 (**1 trillion**)
+- **Total Maximum Fixed Supply** : 1,000,000,000,000 (**1 trillion**) _**No minting and No Burning**_
+- **TYPE**: **U**tility, **D**onation, **C**harity and **P**ayment **T**oken (**UDCPT**) 
+- **Network** / **Blockchain**: **B**inance **S**mart **C**hain (**BSC**)
+- **Version** : Version 2.1 (V2.1)
+- **Upgradeability**: Uses OpenZeppelin UUPS (Universal Upgradeable Proxy Standard)
+- **Pausable**: Multi-sig Owners can pause/unpause transfers for security sake, migration sake or for a community-oriented intervention
+- **Blacklist**: Multi-Sig Owners can block addresses from sending/receiving tokens for security sake, scam prevention, protection from malicious attacks and also for internal regulations sake
+
+## ERC20 V3
+- **Name**: Alpha Omega Coin (AOC)
+- **Symbol**: AOC
+- **Decimals**: 18
+- **Initial Fixed Supply** : 1,000,000,000,000 (**1 trillion**)
+- **Total Maximum Fixed Supply** : 1,000,000,000,000 (**1 trillion**) _**No minting and No Burning**_
+- **TYPE**: **U**tility, **D**onation, **C**harity and **P**ayment **T**oken (**UDCPT**) 
+- **Network** / **Blockchain**: **E**therium **R**equest for **C**omment (**ERC**)
+- **Version** : Version 3
+- **Upgradeability**: Uses OpenZeppelin UUPS (Universal Upgradeable Proxy Standard)
+- **Pausable**: Multi-sig Owners can pause/unpause transfers for security sake, migration sake or for a community-oriented intervention
+- **Blacklist**: Multi-Sig Owners can block addresses from sending/receiving tokens for security sake, scam prevention, protection from malicious attacks and also for internal regulations sake
+
+
+
+
+# Part 2 : Alpha Omega Coin  (AOC) BEP20 V2.1 and ERC20 V3 Token Locker Smart Contract Testnet + Mainnet Codes Identification Urls 
+# Testnet : 
+### _(BNB)_
+**Explorer**:  https://testnet.bscscan.com/address/0xD1Dd6A4019d915D0dAeaC3288e4a86345ec93e0D#writeProxyContract
+### _(Holesky)_
+**Explorer**: https://holesky.etherscan.io/address/0x3Fa5597BA29E833F3cA69a3caCA1Abc14C885bc2#writeProxyContract
+
+### **Github** : 
+- **Branch Name:**  testnet-V1.0.0
+- **Branch Link:** https://github.com/alphaomegacoinaoc/token-locker-contract/blob/testnet-1.0.0/contracts/TokenLocker.sol
+
+
+## Mainnet :
+### _(BSC)_
+**Explorer**:  https://bscscan.com/address/0x002c7d411d65526f716a1D7bCbd004F0e43E9Ae7#writeProxyContract
+### _(Etherium)_
+**Explorer**: https://etherscan.io/address/0xFaf5df85cE532E1bB27c836078aDf562F309a690#writeProxyContract
+
+### **Github** : 
+- **Branch Name:** main-V1.0.0
+- **Branch Link:** https://github.com/alphaomegacoinaoc/token-locker-contract/blob/main-1.0.0/contracts/TokenLocker.sol
+
+
+
+# Part 3 : Alpha Omega Coin  (AOC) BEP20 V2.1 and ERC20 V3 Token Locker Multi-Sig Smart Contract Testnet + Mainnet Codes Identification Urls 
+# Testnet : _(Amoy)_
+**Explorer:**  https://amoy.polygonscan.com/address/0x59952eE49399E847fC4550a06911Ca75a637D302#code
+
+### **Github :** 
+- **Branch Name:** Testnet-v1.0.0
+- **Branch Link:** https://github.com/alphaomegacoinaoc/alphaomegacoinaoc-Multi-Sig-Contract/blob/testnet-v1.0.0/MultiSigTokenVault.sol
+  
+## Mainnet :
+### _(BSC)_
+**Explorer**:  https://bscscan.com/address/0x76cd3474153f16c8e38999e2a9107cc46705c085#readProxyContract
+### _(Etherium)_
+**Explorer**: https://etherscan.io/address/0x47d8f4f0604b859db5AA86ef864574821257F4eC#code
+
+### **Github** : 
+- **Branch Name:** Mainnet-v1.0.0
+- **Branch Link:** https://github.com/alphaomegacoinaoc/alphaomegacoinaoc-Multi-Sig-Contract/blob/Mainnet-v1.0.0/MultiSigTokenVault.sol
+
 ## How It Works
 1. The **Muti-Sig Owners create a lock** for any **AOC ERC20 V3** and **AOC BEP20 (V2.1) Tokens.**
 2. Tokens are **transferred into the TokenLocker(V1.0.0) contract** and held securely.
