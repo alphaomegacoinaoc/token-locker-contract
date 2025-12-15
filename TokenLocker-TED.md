@@ -1,0 +1,179 @@
+# Alpha Omega Coin (AOC), The Queen of cryptocurrencies
+<br>
+
+# Technical Explanatory Documentation (TED)
+## About
+
+# Alpha Omega Coin (AOC) - LOCKER (V1.0.0)
+<br> 
+
+## OVERVIEW:
+## Current and Future AOC Tokens and Coin  Versions
+**Alpha Omega Coin (AOC)** - The **Queen of Cryptocurrencies**, operates on an **interoperable** **Monetary, Financial and Economic Galaxy (AOC MFEG)**  which is composed of **AOC Coin (=AOC M**other **C**oin) and **several tokens.** 
+
+As of now, _**two token contract versions**_ have been launched: 
+- AOC ERC20 V3
+- AOC BEP20 V2.1
+
+**_The following token standards are yet to be launched_:** 
+- AOC TRC20
+- AOC POLY
+
+_**AOC Coin**_ or _**AOC Mother Coin**_ is also yet to be launched…
+
+# Introduction
+The **AOC Locker(V1.0.0)** is a secure, upgradeable Ethereum smart contract designed to l**ock AOC Coin(= AOC Mother Coin) and AOC Tokens (ERC-20; BEP20 V2.1; TRC20; POLY)** for a specific period of time.
+
+ It ensures that **AOC Coin(= AOC Mother Coin) and AOC Tokens (ERC-20; BEP20 V2.1; TRC20; POLY)** cannot be accessed, transferred, or withdrawn until the lock period expires.
+ 
+Only the **contract Mutli-Sig Owners** have full control over creating, managing, and withdrawing locked tokens after the lock period expires.
+
+All lock details are publicly viewable for **transparency**.
+
+In this _**Technical Explanatory Documentation(TED),**_ we are dealing with **AOC ERC20 V3 and AOC BEP20 (V2.1)** Tokens.
+
+# Part 1 : Alpha Omega Coin  (AOC) BEP20 V2.1 Token and ERC20 V3 Identification Core Details
+## AOC BEP20 V2.1
+- **Name**: Alpha Omega Coin
+- **Symbol**: AOC
+- **Decimals**: 18
+- **Initial Fixed Supply** : 1,000,000,000,000 (**1 trillion**)
+- **Total Maximum Fixed Supply** : 1,000,000,000,000 (**1 trillion**) _**No minting and No Burning**_
+- **TYPE**: **U**tility, **D**onation, **C**harity and **P**ayment **T**oken (**UDCPT**) 
+- **Network** / **Blockchain**: **B**inance **S**mart **C**hain (**BSC**)
+- **Standard:** _**B**inance Smart Chain_ **E**volution **P**roposal **20** (_**BEP20**_)
+- **Version** : Version 2.1 (V2.1)
+- **Upgradeability**: Uses OpenZeppelin UUPS (Universal Upgradeable Proxy Standard)
+- **Pausable**: Multi-sig Owners can pause/unpause transfers for security sake, migration sake or for a community-oriented intervention
+- **Blacklist**: Multi-Sig Owners can block addresses from sending/receiving tokens for security sake, scam prevention, protection from malicious attacks and also for internal regulations sake
+
+## AOC ERC20 V3
+- **Name**: Alpha Omega Coin (AOC)
+- **Symbol**: AOC
+- **Decimals**: 18
+- **Initial Fixed Supply** : 100,000,000,000 _(**100 Billion**)_
+- **Total Maximum Fixed Supply** : 100,000,000,000 _(**100 Billion**)_ _**No minting and No Burning**_
+- **TYPE**: **U**tility, **D**onation, **C**harity and **P**ayment **T**oken (**UDCPT**) 
+- **Network** / **Blockchain**: **Ethereum** (_**ETH**_)
+- **Standard**: **E**thereum **R**equest for **C**omment **20** (_**ERC20**_)
+- **Version** : Version 3 (V3)
+- **Upgradeability**: Uses OpenZeppelin UUPS (_Universal Upgradeable Proxy Standard_)
+- **Pausable**: Multi-sig Owners can pause/unpause transfers for security sake, migration sake or for a community-oriented intervention
+- **Blacklist**: Multi-Sig Owners can block addresses from sending/receiving tokens for security sake, scam prevention, protection from malicious attacks and also for internal regulations sake
+
+
+
+
+# Part 2 : Alpha Omega Coin  (AOC) BEP20 V2.1 and ERC20 V3 Locker Smart Contract Testnet + Mainnet Codes Identification Urls 
+# Testnet : 
+### _(BNB)_
+**Explorer**:  https://testnet.bscscan.com/address/0xD1Dd6A4019d915D0dAeaC3288e4a86345ec93e0D#writeProxyContract
+### _(Holesky)_
+**Explorer**: https://holesky.etherscan.io/address/0x3Fa5597BA29E833F3cA69a3caCA1Abc14C885bc2#writeProxyContract
+
+### **Github** : 
+- **Branch Name:**  testnet-V1.0.0
+- **Branch Link:** https://github.com/alphaomegacoinaoc/token-locker-contract/blob/testnet-1.0.0/contracts/TokenLocker.sol
+
+
+## Mainnet :
+### _(BSC)_
+**Explorer**:  https://bscscan.com/address/0x002c7d411d65526f716a1D7bCbd004F0e43E9Ae7#writeProxyContract
+### _(Etherium)_
+**Explorer**: https://etherscan.io/address/0xFaf5df85cE532E1bB27c836078aDf562F309a690#writeProxyContract
+
+### **Github** : 
+- **Branch Name:** main-V1.0.0
+- **Branch Link:** https://github.com/alphaomegacoinaoc/token-locker-contract/blob/main-1.0.0/contracts/TokenLocker.sol
+
+
+
+# Part 3 : Alpha Omega Coin  (AOC) BEP20 V2.1 and ERC20 V3 Locker Multi-Sig Smart Contract Testnet + Mainnet Codes Identification Urls 
+# Testnet : _(Amoy)_
+**Explorer:**  https://amoy.polygonscan.com/address/0x59952eE49399E847fC4550a06911Ca75a637D302#code
+
+### **Github :** 
+- **Branch Name:** Testnet-v1.0.0
+- **Branch Link:** https://github.com/alphaomegacoinaoc/alphaomegacoinaoc-Multi-Sig-Contract/blob/testnet-v1.0.0/MultiSigTokenVault.sol
+  
+## Mainnet :
+### _(BSC)_
+**Explorer**:  https://bscscan.com/address/0x76cd3474153f16c8e38999e2a9107cc46705c085#readProxyContract
+### _(Etherium)_
+**Explorer**: https://etherscan.io/address/0x47d8f4f0604b859db5AA86ef864574821257F4eC#code
+
+### **Github** : 
+- **Branch Name:** Mainnet-v1.0.0
+- **Branch Link:** https://github.com/alphaomegacoinaoc/alphaomegacoinaoc-Multi-Sig-Contract/blob/Mainnet-v1.0.0/MultiSigTokenVault.sol
+
+## Part 4 : How Alpha Omega Coin (AOC) - LOCKER (V1.0.0) Works ?
+1. The **Muti-Sig Owners create a lock** for any **AOC ERC20 V3** and **AOC BEP20 (V2.1) Tokens.**
+2. Tokens are **transferred into the Alpha Omega Coin (AOC) - Locker(V1.0.0) contract** and held securely.
+3. Tokens **remain locked until**:
+    - The **end time** of the lock period is reached.
+   
+The **Mutli-Sig Owners** can at any time:
+
+- Add more tokens to an active lock
+- Extend the duration of a lock
+- Pause or unpause all contract operations
+  
+_**Purpose:**_ Multi-sig Owners can pause/unpause transfers for security sake, migration sake or of a community-oriented intervention
+
+Everyone can view lock information publicly, but only the **Mutli-Sig Owners** can make changes.
+
+## Part 5 : Alpha Omega Coin (AOC) - LOCKER (V1.0.0) Details
+
+Each token lock stores the following information:
+
+- **Token address:** The **ERC20 V3 / BEP20 V2.1** Token being locked
+- **Amount:** Total number of tokens locked
+- **Start and end timestamps:** The lock’s time period
+- **Title and description:** Custom metadata for clarity
+- **Active status:** Whether the lock is currently active
+- **Lock percentage:** Used for calculation purposes.
+  
+## Part 6 : Alpha Omega Coin (AOC) - LOCKER (V1.0.0) Key Features
+- **Upgradeable and Ownable:**
+ Built using _**OpenZeppelin’s upgradeable contract standards**_ with full owner control.
+- **Secure and Transparent:**
+ Uses _**SafeERC20**_ for secure token transfers and emits detailed events for all actions.
+- **Flexible Lock Management:**
+ The _owner can **add tokens, extend locks, or withdraw** at any time._
+- **Pausable Functionality:**
+ The owner can _**pause and unpause** the entire contract_ for safety or maintenance.
+
+# Part 7 : Alpha Omega Coin (AOC) - LOCKER Smart Contract Read + Write Functions
+
+## Signers-Only (WRITE) Functions
+
+- **createLock(...) –** Creates a **new token lock** with _**custom duration,**_ **title, and description.**
+Tokens are transferred into the contract and recorded as locked.
+- **addFundsToLocker(lockId, amount) –** Adds _additional tokens to an existing active lock._
+- **withdrawTokens(lockId, amount, recipient) –** **Withdraws a specified amount of tokens** from a **lock** to any recipient address.
+- **extendLockPeriod(lockId, additionalTime) –** _**Extends the unlock time**_ of an existing lock.
+- **pause() / unpause() –** _**Pauses or resumes all operations**_ within the contract.
+
+
+## Public (READ) Functions
+
+- **getAllUserLocks() –** **Returns all existing locks** with full details.
+- **getUserTokenBalance(token, user) –** Shows any _wallet’s ERC20 V3 and BEP20 V2.1 Token balance._
+- **isLockActive(lockId) –** Returns whether a **specific lock is still active.**
+- **getLockPercentage(lockId) –** Displays the **configured lock percentage value.**
+
+## In Simple Terms
+The **AOC Locker(V1.0.0) contract acts as a secure vault for ERC20 V3 and BEP20 V2.1 Tokens,** managed entirely by the **Mutli-Sig Owners.**
+
+**It allows you to:**
+- **Safely lock tokens** for a _set period_,
+- **Add tokens** as needed,
+- **Extend the lock duration**, and
+- **Temporarily pause all operations** for safety.
+  
+All lock details are visible to the public, ensuring **trust and transparency** while maintaining **full Signers control** over token management.
+
+
+
+
+
