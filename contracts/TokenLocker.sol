@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.27;
+pragma solidity 0.8.27;
 
 import "@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC20/utils/SafeERC20Upgradeable.sol";
@@ -98,9 +98,9 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
     }
 
     function initialize() public initializer{
+         __ReentrancyGuard_init();
         __Ownable_init();
-        require(msg.sender == owner(), "Unauthorized");
-        __ReentrancyGuard_init();
+        // require(msg.sender == owner(), "Unauthorized");
         __UUPSUpgradeable_init();
         __Pausable_init();
     }
@@ -214,10 +214,16 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 
         Lock storage lock = locks[lockId];
 
+        require(block.timestamp >= lock.endTime, "Tokens are still locked");
         require(lock.isActive, "Lock is not Active");
         require(amount > 0 && amount <= lock.amount, "Invalid Withdrawal amount");
 
-         lock.amount -= amount;
+        lock.amount -= amount;
+
+        // Automatically deactivate fully withdrawn locks
+        if (lock.amount == 0) {
+        lock.isActive = false;
+        }
 
         IERC20Upgradeable(lock.tokenAddress).safeTransfer(recipient, amount);
 
@@ -282,4 +288,5 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
         return locks[lockId].lockPercentage;
     }
 }
+
 
